@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
 import { getAuth, updateProfile } from 'firebase/auth';
@@ -8,10 +8,13 @@ import app from '../firebase/firebase.config';
 
 
 const Registration = () => {
+    const [RegError, setRegError] = useState('')
+    const [success, setSuccess] = useState('')
     const { user, createUser } = useContext(AuthContext)
     const auth = getAuth(app);
 
     const handleRegistration = (event) => {
+        setSuccess('')
         event.preventDefault();
 
         const form = event.target;
@@ -20,7 +23,9 @@ const Registration = () => {
         const password = form.password.value;
         const displayName = form.name.value;
         const photoURL = form.photo.value;
-
+        if (password.length < 6) {
+            setRegError('Password must be greater than 6 character')
+        }
 
         createUser(email, password)
 
@@ -28,6 +33,8 @@ const Registration = () => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
                 form.reset();
+                setRegError('')
+                setSuccess('User has created successfully')
                 updateProfile(auth.currentUser, {
                     displayName: displayName, photoURL
                 }).then(() => {
@@ -40,14 +47,15 @@ const Registration = () => {
 
             })
             .catch(error => {
-                console.log(error)
+                console.log(error.message)
+                // setRegError(error.message)
             })
 
 
     }
     return (
         <div>
-            <div className='container w-25 mx-auto mt-5'>
+            <div className='container w-25 mx-auto mt-5 shadow p-3  bg-body-tertiary rounded'>
                 <form onSubmit={handleRegistration}>
 
                     <div className="mb-3">
@@ -77,7 +85,8 @@ const Registration = () => {
                 </form>
                 <p>Already Logged In?  Please <Link to={`/login`} className='text-decoration-none'>Login</Link></p>
             </div >
-
+            <p className='text-center '>{RegError}</p>
+            <p className='text-center '>{success}</p>
         </div >
     );
 };
