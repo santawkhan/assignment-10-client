@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
 import { GithubAuthProvider, GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
 import app from '../../firebase/firebase.config';
@@ -9,10 +9,14 @@ import { FaGoogle, FaGithub } from 'react-icons/fa';
 
 const Login = () => {
     const auth = getAuth(app)
+    const navigate = useNavigate()
+    const location = useLocation()
     const provider = new GoogleAuthProvider()
     const githubProvider = new GithubAuthProvider()
     const { signIn } = useContext(AuthContext)
+    console.log(location)
 
+    const from = location.state?.from?.pathname || '/';
     const handleGitHubSignIn = () => {
         signInWithPopup(auth, githubProvider)
             .then(result => {
@@ -48,6 +52,7 @@ const Login = () => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
                 form.reset();
+                navigate(from)
 
             })
             .catch(error => {
