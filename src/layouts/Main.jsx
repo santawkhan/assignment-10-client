@@ -8,7 +8,8 @@ const Main = () => {
     return (
         <div className='container'>
             <Header></Header>
-            <Outlet></Outlet>
+            <div className='min-h-[calc-(100vh-137)]'> <Outlet></Outlet></div>
+
             <Footer></Footer>
         </div>
     );
