@@ -4,7 +4,7 @@ import { AuthContext } from './provider/AuthProvider';
 import { useParams } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Card } from 'react-bootstrap';
+import { Card, Col, Row } from 'react-bootstrap';
 
 
 const ChefDetails = (chef) => {
@@ -43,7 +43,51 @@ const ChefDetails = (chef) => {
                 </Card.ImgOverlay>
             </Card>
 
+            <div className='mt-4 '><Row xs={1} md={2} lg={2} className="g-4 mb-3">
 
+                <Col >
+                    <Card className='shadow p-3 mb-5  rounded zoom bg-danger-subtle border border-primary'>
+
+                        <Card.Body>
+                            <Card.Title>{details.recipe_name_one}</Card.Title>
+                            <Card.Text>
+                                <p> <h4>Ingredients:</h4>{details.ingredients_one}</p>
+                                <p className='fw-bold'>Cooking Method </p>
+                                <p>{details.cooking_method_one}</p>
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                </Col>
+                <Col >
+                    <Card className='shadow p-3 mb-5 bg-body-tertiary rounded zoom border border-primary '>
+
+                        <Card.Body>
+                            <Card.Title> <h3>{details.recipe_name_two}</h3> </Card.Title>
+                            <Card.Text>
+                                <p> <h4>Ingredients:</h4>{details.ingredients_three}</p>
+                                <p className='fw-bold'>Cooking Method </p>
+                                <p>{details.cooking_method_two}</p>
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                </Col>
+                <Col >
+                    <Card className='shadow p-3 mb-5 bg-body-tertiary rounded zoom border border-primary'>
+
+                        <Card.Body>
+                            <Card.Title>{details.recipe_name_three}</Card.Title>
+                            <Card.Text>
+                                <p> <h4>Ingredients:</h4>{details.ingredients_three}</p>
+                                <p className='fw-bold'>Cooking Method </p>
+                                <p>{details.cooking_method_two}</p>
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                </Col>
+
+
+
+            </Row></div>
         </div>
     );
 };
