@@ -57,7 +57,7 @@ const Login = () => {
     }
     return (
         <div>
-            <div className='container w-25 mx-auto mt-5'>
+            <div className='container w-25 mx-auto mt-5 shadow p-3  bg-body-tertiary rounded'>
                 <form onSubmit={handleLogin}>
 
                     <div className="mb-3">
@@ -77,7 +77,7 @@ const Login = () => {
                 </form>
                 <p>New to here ?  Please <Link to={`/registration`} className='text-decoration-none'>Registration</Link></p>
             </div>
-            <h3 className='text-center mt-5'>Or </h3>
+            <p className='text-center mt-5 fw-semibold'>Or </p>
             <div className='text-center mt-3'><button onClick={handleGoogleSignIn} type="button" className='btn btn-primary'>SignIn With Google <FaGoogle /></button></div>
             <div className='text-center mt-3'><button type="button" onClick={handleGitHubSignIn} className='btn btn-primary'>SignIn With Github <FaGithub /></button></div>
 

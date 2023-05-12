@@ -30,7 +30,7 @@ const Header = () => {
                         </Nav>
 
                         <Nav> {
-                            user?.photoURL ? <><span ><img src={user?.photoURL} className='rounded-circle w-50' title={user?.displayName
+                            user?.photoURL ? <><span ><img src={user?.photoURL} className='rounded-circle w-25 ' title={user?.displayName
                             } alt="" /></span> <button onClick={handleLogOut} className='btn btn primary'>SingOut</button></> : <button className='btn btn primary '><Link to="/login" className='text-decoration-none'>Login</Link></button>
 
                         }
