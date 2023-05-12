@@ -2,6 +2,7 @@
 import React from 'react';
 import FirstSection from '../homepage/FirstSection';
 import Banner from '../Banner';
+import SecondSection from '../SecondSection';
 
 
 const Home = () => {
@@ -9,6 +10,7 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <FirstSection></FirstSection>
+            <SecondSection></SecondSection>
         </div>
     );
 };

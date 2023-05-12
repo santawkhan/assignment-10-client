@@ -1,0 +1,12 @@
+.zoom {
+    transition: all 0.3s;
+}
+
+.zoom:hover {
+    transform: scale(1.15);
+}
+
+.text:hover {
+    color: aqua;
+    font-size: 2rem;
+}
