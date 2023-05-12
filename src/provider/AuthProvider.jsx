@@ -24,7 +24,9 @@ const AuthProvider = ({ children }) => {
     }
 
     const logOut = () => {
+        setLoading(true);
         return signOut(auth)
+
     }
 
     useEffect(() => {
@@ -38,7 +40,7 @@ const AuthProvider = ({ children }) => {
         }
     }, [])
     const authInfo = {
-        user, createUser, signIn, logOut
+        user, createUser, signIn, logOut, loading
     }
     return (
         <AuthContext.Provider value={authInfo}>
