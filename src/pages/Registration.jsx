@@ -3,11 +3,13 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
+import { getAuth, updateProfile } from 'firebase/auth';
+import app from '../firebase/firebase.config';
 
 
 const Registration = () => {
     const { user, createUser } = useContext(AuthContext)
-
+    const auth = getAuth(app);
 
     const handleRegistration = (event) => {
         event.preventDefault();
@@ -26,10 +28,21 @@ const Registration = () => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
                 form.reset();
+                updateProfile(auth.currentUser, {
+                    displayName: displayName, photoURL
+                }).then(() => {
+                    console.log("userUpdated")
+                    // ...
+                }).catch((error) => {
+                    // An error occurred
+                    // ...
+                });
+
             })
             .catch(error => {
                 console.log(error)
             })
+
 
     }
     return (
