@@ -3,6 +3,7 @@ import React, { createContext, useContext } from 'react';
 import { Button, Container, Nav, NavDropdown, NavLink, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from './provider/AuthProvider';
+import navPhoto from './assets/images/navphoto.png'
 
 
 const Header = () => {
@@ -19,7 +20,7 @@ const Header = () => {
         <div >
             <Container><Navbar collapseOnSelect expand="lg" bg="light" variant="light">
                 <Container>
-                    <Navbar.Brand href="#home"><img src="../public/images/navphoto.png" alt="" /></Navbar.Brand>
+                    <Navbar.Brand href="#home"><img src={navPhoto} alt="" /></Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="ms-auto">
@@ -30,7 +31,7 @@ const Header = () => {
                         </Nav>
 
                         <Nav> {
-                            user?.photoURL ? <><span ><img src={user?.photoURL} className='rounded-circle w-25 ' title={user?.displayName
+                            user?.photoURL ? <><span ><img src={user?.photoURL} className='rounded-circle w-25' title={user?.displayName
                             } alt="" /></span> <button onClick={handleLogOut} className='btn btn primary'>SingOut</button></> : <button className='btn btn primary '><Link to="/login" className='text-decoration-none'>Login</Link></button>
 
                         }

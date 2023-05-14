@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
+import bannerImg from './assets/images/banner.jpg'
 
 const Banner = () => {
     return (
@@ -11,7 +12,7 @@ const Banner = () => {
                     On behalf of food Recipes , it is our great pleasure to welcome you to our establishment. We are excited to have you here and hope that you have an enjoyable and satisfying dining experience with us.
 
                     At Foot Recipes, we pride ourselves on serving high-quality, delicious food made from the freshest and finest ingredients. Our menu features a wide variety of dishes that cater to different tastes and preferences, from traditional favorites to innovative and exciting new creations.</div>
-                <div className='col'><img className='w-75%' src="/public/images/banner.jpg" alt="" /></div>
+                <div className='col'><img className='w-75%' src={bannerImg} alt="" /></div>
             </div>
         </div>
     );

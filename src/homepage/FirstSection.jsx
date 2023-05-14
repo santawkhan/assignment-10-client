@@ -7,7 +7,7 @@ import Chefs from '../Chefs';
 const FirstSection = () => {
     const [chefsData, setchefsData] = useState([])
     useEffect(() => {
-        fetch("http://localhost:5000/chefData")
+        fetch("https://chef-website-server-santawkhan.vercel.app/chefData")
             .then(res => res.json())
             .then(data => setchefsData(data))
     }, [])
